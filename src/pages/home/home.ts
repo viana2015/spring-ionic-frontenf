@@ -25,6 +25,15 @@ export class HomePage {
     this.menu.swipeEnable(true);
   }
 
+  ionViewDidEnter(){
+    this.auth.refreshToken()
+    .subscribe(response => { // Me inscrevendo para receber uma resposta. Se ele vir com sucesso eu imprimo no log
+      this.auth.successfulLogin(response.headers.get('Authorization'));
+      this.navCtrl.setRoot('CategoriasPage');
+    },
+    error => {});
+  }
+
   login(){
     this.auth.authenticate(this.creds)
     .subscribe(response => { // Me inscrevendo para receber uma resposta. Se ele vir com sucesso eu imprimo no log
