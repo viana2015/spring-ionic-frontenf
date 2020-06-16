@@ -1,3 +1,4 @@
 export const STORA_KEYS = {
-    localUser: "localUser"
+    localUser: "localUser",
+    cart: "cursoSpringIonicCart"
 }
