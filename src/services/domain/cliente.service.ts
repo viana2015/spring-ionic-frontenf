@@ -12,6 +12,10 @@ export class ClienteService {
 
     }
 
+    findById(id: String) {
+        return this.http.get(`${API_CONFIG.baseUrl}/clientes/${id}`); // Passando o cabeçalho para requisição
+    }
+
     findByEmail(email: String) {
         return this.http.get(`${API_CONFIG.baseUrl}/clientes/email?value=${email}`); // Passando o cabeçalho para requisição
     }
