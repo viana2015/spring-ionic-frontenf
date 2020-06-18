@@ -12,9 +12,8 @@ export class ClienteService {
 
     }
 
-    findByEmail(email: String) : Observable<ClienteDTO>{
-        return this.http.get<ClienteDTO>(
-            `${API_CONFIG.baseUrl}/clientes/email?value=${email}`); // Passando o cabeçalho para requisição
+    findByEmail(email: String) {
+        return this.http.get(`${API_CONFIG.baseUrl}/clientes/email?value=${email}`); // Passando o cabeçalho para requisição
     }
 
     getImageFromBucket(id : String) : Observable<any> {
