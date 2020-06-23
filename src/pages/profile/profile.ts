@@ -27,6 +27,11 @@ export class ProfilePage {
   }
 
   ionViewDidLoad() {
+   this.loadData();
+  }
+
+  loadData(){
+   
     let localUser = this.storage.getLocalUser(); //se existir este localUser a variavél estara valendo
     if (localUser && localUser.email) { // testo se o localUser possui um email 
       this.clienteService.findByEmail(localUser.email)
@@ -71,5 +76,21 @@ export class ProfilePage {
      
     });
 
+  }
+
+  sendPicture(){
+    this.clienteService.uploadPicture(this.picture)
+      .subscribe(response => {
+        this.picture = null;
+        this.loadData();
+
+      },
+      error => {
+
+      });
+  }
+
+  cancel() {
+    this.picture = null;
   }
 }
